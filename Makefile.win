@@ -1,0 +1,2 @@
+run:
+	@python -k$(I) -k$(O)
