@@ -38,6 +38,7 @@ def write_data_to_file(employe_list:List[Employee]):
     with open(dir, "w") as file:
         lines = []
         for employee in employe_list:
+            print(f'The amount to pay {employee.name} is: {employee.salary} USD')
             lines.append(f'{employee.name}={employee.days_worked}')
             lines.append(f'The amount to pay {employee.name} is: {employee.salary} USD')
         file.write('\n'.join(lines))
