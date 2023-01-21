@@ -3,9 +3,9 @@ from helpers import MAX_HOUR, MIN_HOUR
 from utils import get_hours
 
 
-class WorkingHours:
+class HoursOfWork:
     """
-    Employees' working hours
+    Hours of work from an employee
     """
 
     def __init__(self, hours: str):
@@ -22,11 +22,5 @@ class WorkingHours:
         if self.start_time > MAX_HOUR or self.end_time > MAX_HOUR:
             raise HourShiftError(self.start_time, self.end_time)
 
-    def start_time_is_between(self, shift):
-        ans = False
-
-        if self.start_time >= shift.start_time:
-            if self.start_time <= shift.end_time:
-                ans = True
-
-        return ans
+        if self.start_time > self.end_time:
+            raise HourShiftError(self.start_time, self.end_time)

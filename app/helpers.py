@@ -16,7 +16,7 @@ MALFORMED_FILE = "File is malformed, please check the file"
 WRONG_TIME_RANGE = "Invalid range of hours"
 EMPTY_FILE = "File is empty"
 
-LABORDAYS = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+LABORDAYS = ["MO", "TU", "WE", "TH", "FR"]
 WEEKEND = ["SA", "SU"]
 
 MIN_HOUR = 0

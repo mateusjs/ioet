@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import patch
 from exceptions import FileWithBadFormation
 from utils import get_name, get_hours, get_days_of_work, get_the_shift
 
@@ -47,10 +46,10 @@ class TestUtils(unittest.TestCase):
         for i in range(1, 9):
             shift = get_the_shift(i)
             assert shift == "morning"
-        for i in range(9, 18):
+        for i in range(10, 18):
             shift = get_the_shift(i)
             assert shift == "evening"
-        for i in range(18, 25):
+        for i in range(19, 25):
             if i == 24:
                 shift = get_the_shift(0)
             shift = get_the_shift(i)

@@ -21,8 +21,8 @@ def get_hours(hours: str):
         raise
 
 def get_the_shift(hour):
-    if hour > 0 and hour < 9:
+    if hour > 0 and hour <= 9:
         return "morning"
-    if hour >= 9 and hour < 18:
+    if hour > 9 and hour <= 18:
         return "evening"
     return "night"

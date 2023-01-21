@@ -1,7 +1,7 @@
 import sys
 import unittest
 from unittest.mock import patch
-from exceptions import FileNotFound
+from exceptions import BlankFile, FileNotFound
 import os
 import io
 from file import get_file, read_file, find_employee_on_file
@@ -10,8 +10,6 @@ correct_file = [
     "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00",
     "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00",
 ]
-
-empty = []
 
 
 class TestFiles(unittest.TestCase):
@@ -30,9 +28,19 @@ class TestFiles(unittest.TestCase):
         self.assertTrue("No such file or directory" in str(context.exception))
 
     def test_shoudl_read_file_with_success(self):
-        file_dir = os.path.join(os.getcwd(), "data\\file.txt")
+        file_dir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "data\\file.txt"
+        )
         file_lines = read_file(file_dir)
         assert file_lines
+
+    def test_shoudl_read_file_with_blank_file_error(self):
+        file_dir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "data\\empty_file_test.txt"
+        )
+        with self.assertRaises(BlankFile) as context:
+            read_file(file_dir)
+        self.assertTrue("File has no content" in str(context.exception))
 
     def test_should_read_file_with_error(self):
         with self.assertRaises(FileNotFoundError) as context:

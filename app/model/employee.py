@@ -5,18 +5,15 @@ from model.day import Day
 class Employee:
     salary = 0
 
-    def __init__(self, name, days_worked):
-        self.name = name
-        self.days_worked = days_worked
-
-    def __str__(self) -> str:
-        pass
+    def __init__(self, name: str, days_worked: str):
+        self.name: str = name
+        self.days_worked: str = days_worked
 
     def calculate_salary(self) -> float:
         salary: float = 0.0
-        days_of_work = self.days_worked.split(",")
-        if "" in days_of_work:
-            raise FileWithBadFormation("Error obtaining datetimes")
+        days_of_work = self.days_worked.split(',')
+        if '' in days_of_work:
+            raise FileWithBadFormation('Error obtaining datetimes')
         else:
             for day in days_of_work:
                 day_times = day[2:]
