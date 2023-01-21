@@ -1,6 +1,7 @@
 import unittest
+from unittest.mock import patch
 from exceptions import FileWithBadFormation
-from utils import get_name, get_hours, get_days_of_work, get_the_shift
+from utils import get_name, get_hours, get_days_of_work, get_the_shift, file_path_based_on_os
 
 
 class TestUtils(unittest.TestCase):
@@ -20,7 +21,8 @@ class TestUtils(unittest.TestCase):
         with self.assertRaises(FileWithBadFormation) as context:
             get_days_of_work("BRUNAO")
         self.assertTrue(
-            "File has bad formation, validate your data" in str(context.exception)
+            "File has bad formation, validate your data" in str(
+                context.exception)
         )
 
     def test_should_get_hours_with_success(self):
@@ -39,7 +41,8 @@ class TestUtils(unittest.TestCase):
         with self.assertRaises(AttributeError) as context:
             get_hours(None)
         self.assertTrue(
-            "'NoneType' object has no attribute 'split'" in str(context.exception)
+            "'NoneType' object has no attribute 'split'" in str(
+                context.exception)
         )
 
     def test_should_get_the_shift_with_success(self):
@@ -54,3 +57,15 @@ class TestUtils(unittest.TestCase):
                 shift = get_the_shift(0)
             shift = get_the_shift(i)
             assert shift == "night"
+
+    @patch('utils.os.name', "java")
+    def test_should_return_path_for_not_windows_with_success(self):
+        expected_path = 'data/test.txt'
+        file_path = file_path_based_on_os('test.txt')
+        assert expected_path in file_path
+
+    @patch('utils.os.name', "nt")
+    def test_should_return_path_based_for_windows_with_success(self):
+        expected_path = 'data\\test.txt'
+        file_path = file_path_based_on_os('test.txt')
+        assert expected_path in file_path
