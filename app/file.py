@@ -2,7 +2,8 @@ import os
 from typing import List
 from exceptions import BlankFile, FileNotFound
 from model.employee import Employee
-from utils import get_name, get_days_of_work
+from utils import get_name, get_days_of_work, file_path_based_on_os
+
 
 def find_employee_on_file():
     file = get_file()
@@ -17,9 +18,10 @@ def find_employee_on_file():
 
 
 def get_file() -> str:
-    file_path = os.path.join(os.getcwd(), 'data\\file.txt')
+    file_path = os.path.join(os.getcwd(), file_path_based_on_os('file.txt'))
     return read_file(file_path)
-    
+
+
 def read_file(path: str):
     try:
         file_lines = []
@@ -27,18 +29,23 @@ def read_file(path: str):
             file_lines = file.readlines()
     except FileNotFoundError:
         raise
-    
+
     if not file_lines:
         raise BlankFile('File has no content')
-    
+
     return file_lines
 
-def write_data_to_file(employe_list:List[Employee]):
-    dir = os.path.join(os.getcwd(), 'data\\employees_payment.txt')
+
+def write_data_to_file(employe_list: List[Employee]):
+    dir = os.path.join(
+        os.getcwd(), file_path_based_on_os('employees_payment.txt')
+    )
     with open(dir, "w") as file:
         lines = []
         for employee in employe_list:
-            print(f'The amount to pay {employee.name} is: {employee.salary} USD')
+            print(
+                f'The amount to pay {employee.name} is: {employee.salary} USD')
             lines.append(f'{employee.name}={employee.days_worked}')
-            lines.append(f'The amount to pay {employee.name} is: {employee.salary} USD')
+            lines.append(
+                f'The amount to pay {employee.name} is: {employee.salary} USD')
         file.write('\n'.join(lines))
