@@ -1,6 +1,6 @@
 import os
 from typing import List
-from exceptions import BlankFile, FileNotFound
+from exceptions import BlankFile
 from model.employee import Employee
 from utils import get_name, get_days_of_work, file_path_based_on_os
 

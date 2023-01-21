@@ -1,25 +1,25 @@
 from exceptions import HourShiftError, NoHoursFound
 from model.hours_of_work import HoursOfWork
-from helpers import WEEKEND, TypeOfWeek, shifts
+from model.helpers import WEEKEND, TypeOfWeek, shifts
 from utils import get_the_shift
 
 
 class Day:
     """
-    A period of 24 hours beginning at midnight,
-    one of the seven time periods that make up a week.
+    Model that make easier to take control of a day
+    
     """
 
-    def __init__(self, day_abbreviation: str):
-        self.day_abbreviation = day_abbreviation
+    def __init__(self, day_initials: str):
+        self.day_initials = day_initials
         self._type_of_week = self._get_week_type()
 
     def _get_week_type(self) -> str:
-        if not self.day_abbreviation:
-            raise ValueError("day_abbreviation cannot be None or empty")
+        if not self.day_initials:
+            raise ValueError("day_initials cannot be None or empty")
         _type_of_week = TypeOfWeek.WEEK
 
-        if self.day_abbreviation in WEEKEND:
+        if self.day_initials in WEEKEND:
             _type_of_week = TypeOfWeek.WEEKEND
 
         return _type_of_week

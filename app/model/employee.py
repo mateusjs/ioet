@@ -17,8 +17,8 @@ class Employee:
         else:
             for day in days_of_work:
                 day_times = day[2:]
-                day_abbreviation = day[:2]
-                day_obj = Day(day_abbreviation)
+                day_initials = day[:2]
+                day_obj = Day(day_initials)
                 day_cost = day_obj.calculate_day_cost(day_times)
                 salary += day_cost
 

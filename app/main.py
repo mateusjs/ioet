@@ -1,5 +1,4 @@
-from file import get_file, find_employee_on_file
-import sys
+from file_management import find_employee_on_file
 
 
 if __name__ == '__main__':

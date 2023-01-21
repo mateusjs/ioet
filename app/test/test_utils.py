@@ -21,7 +21,7 @@ class TestUtils(unittest.TestCase):
         with self.assertRaises(FileWithBadFormation) as context:
             get_days_of_work("BRUNAO")
         self.assertTrue(
-            "File has bad formation, validate your data" in str(
+            "File has bad formation, validate your file data" in str(
                 context.exception)
         )
 

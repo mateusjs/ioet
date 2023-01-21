@@ -4,8 +4,8 @@ import os
 import io
 from unittest.mock import patch
 from exceptions import BlankFile
-from file import get_file, read_file, find_employee_on_file
 from utils import file_path_based_on_os
+from file_management import find_employee_on_file, get_file, read_file
 
 correct_file = [
     "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00",
@@ -14,7 +14,7 @@ correct_file = [
 
 
 class TestFiles(unittest.TestCase):
-    @patch("file.read_file")
+    @patch("file_management.read_file")
     def test_get_file_should_find_file_and_call_read_file(self, mock_read_file):
         mock_read_file.return_value = correct_file
         file = get_file()
@@ -54,7 +54,7 @@ class TestFiles(unittest.TestCase):
             read_file("")
         self.assertTrue("No such file or directory" in str(context.exception))
 
-    @patch("file.get_file")
+    @patch("file_management.get_file")
     def test_should_find_employee_on_file_with_success(self, mock_get_file):
         captured_output = io.StringIO()
         sys.stdout = captured_output
