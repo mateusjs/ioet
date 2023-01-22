@@ -14,7 +14,7 @@ This projects consists on an simple application to solve a programming exercise.
 To run this project make sure you have installed on your os:
 
 ```bash
- python >= 3.9
+ python >= 3.8.10
 ```
 
 ## Running the app
