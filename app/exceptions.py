@@ -14,5 +14,5 @@ class NoHoursFound(Exception):
     pass
 
 
-class HourShiftError(Exception):
+class HoursShiftError(Exception):
     pass

@@ -1,7 +1,7 @@
 from exceptions import NoHoursFound
 from model.enums import TypeOfWeek
 from model.helpers import WEEKEND, shifts
-from model.hours_of_work import HoursOfWork
+from model.hours import Hours
 from utils import get_the_shift
 
 
@@ -34,7 +34,7 @@ class Day:
         if not hours:
             raise NoHoursFound("The actual day has no hours")
 
-        work = HoursOfWork(hours)
+        work = Hours(hours)
 
         total = 0
         start = work.start_time + 1

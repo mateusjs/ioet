@@ -1,6 +1,6 @@
 import unittest
 
-from exceptions import FileWithBadFormation, HourShiftError
+from exceptions import FileWithBadFormation, HoursShiftError
 from model.employee import Employee
 
 
@@ -24,7 +24,7 @@ class TestEmployee(unittest.TestCase):
         name: str = 'JOAO'
         days_worked: str = 'MO1:00-10:00,TH4:00-11:00,SA17:00-15:00'
         employee = Employee(name, days_worked)
-        with self.assertRaises(HourShiftError) as context:
+        with self.assertRaises(HoursShiftError) as context:
             employee.calculate_salary()
         self.assertTrue('(17, 15)' in str(context.exception))
 

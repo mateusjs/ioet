@@ -31,7 +31,7 @@ cd app
 ```
 
 
- **_NOTE:_**  Do not change the file **file.txt**  within **data** folder, it is the file to run the program correctly, so if you want to change the input, just edit the file.
+ **_NOTE:_**  Do not change the file name **file.txt**  within **data** folder, it is the file to run the program correctly, so if you want to change the input, just edit the file.
 
 
 Execute the file **main.py** file to run the application.

@@ -1,9 +1,9 @@
-from exceptions import HourShiftError
+from exceptions import HoursShiftError
 from model.helpers import MAX_HOUR
 from utils import get_hours
 
 
-class HoursOfWork:
+class Hours:
     """Class that check the hours of work from a day
     Args:
         hours (str): worked hours on the day
@@ -15,13 +15,13 @@ class HoursOfWork:
 
     def set_start_and_end_times(self):
         if self.start_time > MAX_HOUR or self.end_time > MAX_HOUR:
-            raise HourShiftError(self.start_time, self.end_time)
+            raise HoursShiftError(self.start_time, self.end_time)
 
         if self.start_time == 0:
-            raise HourShiftError(self.start_time, self.end_time)
+            raise HoursShiftError(self.start_time, self.end_time)
 
         if self.end_time == 0:
             self.end_time = MAX_HOUR
 
         if self.start_time > self.end_time:
-            raise HourShiftError(self.start_time, self.end_time)
+            raise HoursShiftError(self.start_time, self.end_time)

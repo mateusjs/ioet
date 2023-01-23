@@ -1,7 +1,12 @@
 import unittest
 
-from exceptions import (BlankFile, FileNotFound, FileWithBadFormation,
-                        HourShiftError, NoHoursFound)
+from exceptions import (
+    BlankFile,
+    FileNotFound,
+    FileWithBadFormation,
+    HoursShiftError,
+    NoHoursFound
+)
 
 
 class TestExceptions(unittest.TestCase):
@@ -22,7 +27,7 @@ class TestExceptions(unittest.TestCase):
 
     def test_hour_shift_error(self):
         with self.assertRaises(Exception) as context:
-            raise HourShiftError("Hour shift error")
+            raise HoursShiftError("Hour shift error")
         self.assertTrue("Hour shift error" in str(context.exception))
 
     def test_no_hours_found(self):
