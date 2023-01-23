@@ -2,7 +2,8 @@ import unittest
 from unittest.mock import patch
 from exceptions import NoHoursFound
 from model.day import Day
-from model.helpers import TypeOfWeek, LABORDAYS, WEEKEND
+from model.helpers import LABORDAYS, WEEKEND
+from model.enums import TypeOfWeek
 
 
 class TestDay(unittest.TestCase):

@@ -3,6 +3,14 @@ from model.day import Day
 
 
 class Employee:
+    """Class tha represent an employee
+    Args:
+        name (str): Name of employee
+        days_worked (str): days that the employee worked    
+    Returns:
+        float: The value of total salary
+    """
+
     salary = 0
 
     def __init__(self, name: str, days_worked: str):

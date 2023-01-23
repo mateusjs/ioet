@@ -90,3 +90,7 @@ With that in mind became easy code, so i created a component to process the file
 While coding was possible notice the lack of some helper functions, so i created it.
 
 After finishing to code, and test, i start to improve the app with some actions and documentation.
+
+The idea of the solution is to get the value of the multiplier for each hour worked on each day.
+
+So i splitted the input by day, then for each hour i check the amount to pay and add it to the total.

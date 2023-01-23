@@ -1,13 +1,19 @@
 from exceptions import HourShiftError, NoHoursFound
 from model.hours_of_work import HoursOfWork
-from model.helpers import WEEKEND, TypeOfWeek, shifts
+from model.helpers import WEEKEND, shifts
+from model.enums import TypeOfWeek
 from utils import get_the_shift
 
 
 class Day:
-    """
-    Model that make easier to take control of a day
-    
+    """Class tha represent a day with 24 hours
+    Args:
+        day_initials (str): initials of a day
+    Returns:
+        TypeOfWeek: Return if the current day a
+        week or weekend day
+
+        Float: Return the total cost of the day
     """
 
     def __init__(self, day_initials: str):

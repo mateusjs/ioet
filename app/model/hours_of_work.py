@@ -4,8 +4,9 @@ from utils import get_hours
 
 
 class HoursOfWork:
-    """
-    Hours of work from an employee
+    """Class that check the hours of work from a day
+    Args:
+        hours (str): worked hours on the day
     """
 
     def __init__(self, hours: str):
@@ -20,7 +21,7 @@ class HoursOfWork:
             raise HourShiftError(self.start_time, self.end_time)
 
         if self.end_time == 0:
-            self.end_time = 24
+            self.end_time = MAX_HOUR
 
         if self.start_time > self.end_time:
             raise HourShiftError(self.start_time, self.end_time)
