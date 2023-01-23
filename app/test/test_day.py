@@ -1,9 +1,9 @@
 import unittest
-from unittest.mock import patch
+
 from exceptions import NoHoursFound
 from model.day import Day
-from model.helpers import LABORDAYS, WEEKEND
 from model.enums import TypeOfWeek
+from model.helpers import LABORDAYS, WEEKEND
 
 
 class TestDay(unittest.TestCase):
@@ -54,4 +54,6 @@ class TestDay(unittest.TestCase):
         day = Day(day_initials)
         with self.assertRaises(NoHoursFound) as context:
             day.calculate_day_cost("")
-        self.assertTrue("The actual day has no hours" in str(context.exception))
+        self.assertTrue(
+            "The actual day has no hours" in str(context.exception)
+        )

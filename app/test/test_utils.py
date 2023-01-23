@@ -1,12 +1,13 @@
 import unittest
 from unittest.mock import patch
+
 from exceptions import FileWithBadFormation
 from utils import (
-    get_name,
-    get_hours,
+    file_path_based_on_os,
     get_days_of_work,
-    get_the_shift,
-    file_path_based_on_os
+    get_hours,
+    get_name,
+    get_the_shift
 )
 
 
@@ -20,12 +21,12 @@ class TestUtils(unittest.TestCase):
         assert name == ""
 
     def test_should_get_days_of_work_with_success(self):
-        days = get_days_of_work("BRUNAO=MO7:00-11:00,TU14:00-16:00")
+        days = get_days_of_work("ANTONIO=MO7:00-11:00,TU14:00-16:00")
         assert days == "MO7:00-11:00,TU14:00-16:00"
 
     def test_should_get_days_of_work_with_file_bad_formation_error(self):
         with self.assertRaises(FileWithBadFormation) as context:
-            get_days_of_work("BRUNAO")
+            get_days_of_work("ANTONIO")
         self.assertTrue(
             "File has bad formation, validate your file data" in str(
                 context.exception)
@@ -40,7 +41,9 @@ class TestUtils(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             get_hours("")
         self.assertTrue(
-            "invalid literal for int() with base 10: ''" in str(context.exception)
+            "invalid literal for int() with base 10: ''" in str(
+                context.exception
+            )
         )
 
     def test_should_get_hours_with_attribute_error(self):

@@ -1,8 +1,7 @@
 import unittest
+
 from exceptions import FileWithBadFormation, HourShiftError
 from model.employee import Employee
-
-line = 'JOAO='
 
 
 class TestEmployee(unittest.TestCase):

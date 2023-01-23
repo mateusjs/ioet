@@ -1,21 +1,24 @@
+import io
+import os
 import sys
 import unittest
-import os
-import io
 from unittest.mock import patch
+
 from exceptions import BlankFile
-from utils import file_path_based_on_os
 from file_management import find_employee_on_file, get_file, read_file
+from utils import file_path_based_on_os
 
 correct_file = [
-    "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00",
+    "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00",
     "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00",
 ]
 
 
 class TestFiles(unittest.TestCase):
     @patch("file_management.read_file")
-    def test_get_file_should_find_file_and_call_read_file(self, mock_read_file):
+    def test_get_file_should_find_file_and_call_read_file(
+        self, mock_read_file
+    ):
         mock_read_file.return_value = correct_file
         file = get_file()
         assert file == correct_file
@@ -62,5 +65,5 @@ class TestFiles(unittest.TestCase):
         find_employee_on_file()
         sys.stdout = sys.__stdout__
         output = captured_output.getvalue().split("\n")
-        assert output[0] == "The amount to pay RENE is: 215.0 USD"
+        assert output[0] == "The amount to pay RENE is: 190.0 USD"
         assert output[1] == "The amount to pay ASTRID is: 85.0 USD"

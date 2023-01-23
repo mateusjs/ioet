@@ -1,8 +1,9 @@
 import os
 from typing import List
+
 from exceptions import BlankFile
 from model.employee import Employee
-from utils import get_name, get_days_of_work, file_path_based_on_os
+from utils import file_path_based_on_os, get_days_of_work, get_name
 
 
 def find_employee_on_file():

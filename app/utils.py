@@ -1,6 +1,7 @@
-from typing import Tuple
-from exceptions import FileWithBadFormation
 import os
+from typing import Tuple
+
+from exceptions import FileWithBadFormation
 
 
 def file_path_based_on_os(file_name: str) -> str:
@@ -16,7 +17,7 @@ def get_name(text_line: str) -> str:
 def get_days_of_work(text_line: str) -> str:
     try:
         return text_line.split("=")[1].replace('\n', '')
-    except:
+    except Exception:
         raise FileWithBadFormation(
             "File has bad formation, validate your file data")
 

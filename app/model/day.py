@@ -1,7 +1,7 @@
-from exceptions import HourShiftError, NoHoursFound
-from model.hours_of_work import HoursOfWork
-from model.helpers import WEEKEND, shifts
+from exceptions import NoHoursFound
 from model.enums import TypeOfWeek
+from model.helpers import WEEKEND, shifts
+from model.hours_of_work import HoursOfWork
 from utils import get_the_shift
 
 

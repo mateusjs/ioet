@@ -1,11 +1,7 @@
 import unittest
-from exceptions import (
-    BlankFile,
-    FileNotFound,
-    FileWithBadFormation,
-    HourShiftError,
-    NoHoursFound,
-)
+
+from exceptions import (BlankFile, FileNotFound, FileWithBadFormation,
+                        HourShiftError, NoHoursFound)
 
 
 class TestExceptions(unittest.TestCase):
