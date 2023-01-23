@@ -1,7 +1,13 @@
 import unittest
 from unittest.mock import patch
 from exceptions import FileWithBadFormation
-from utils import get_name, get_hours, get_days_of_work, get_the_shift, file_path_based_on_os
+from utils import (
+    get_name,
+    get_hours,
+    get_days_of_work,
+    get_the_shift,
+    file_path_based_on_os
+)
 
 
 class TestUtils(unittest.TestCase):
@@ -51,7 +57,7 @@ class TestUtils(unittest.TestCase):
             assert shift == "morning"
         for i in range(10, 18):
             shift = get_the_shift(i)
-            assert shift == "evening"
+            assert shift == "day"
         for i in range(19, 25):
             if i == 24:
                 shift = get_the_shift(0)
