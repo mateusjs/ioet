@@ -1,4 +1,5 @@
-from file_management import find_employee_on_file
+from file_management import EmployeeFileHandler
 
 if __name__ == '__main__':
-    find_employee_on_file()
+    e_f_h = EmployeeFileHandler()
+    e_f_h.find_employee_on_file()

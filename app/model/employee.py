@@ -1,5 +1,6 @@
 from exceptions import FileWithBadFormation
 from model.day import Day
+from functools import lru_cache
 
 
 class Employee:
@@ -17,6 +18,7 @@ class Employee:
         self.name: str = name
         self.days_worked: str = days_worked
 
+    @lru_cache(maxsize=None)
     def calculate_salary(self) -> float:
         salary: float = 0.0
         days_of_work = self.days_worked.split(',')

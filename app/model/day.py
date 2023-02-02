@@ -3,7 +3,7 @@ from model.enums import TypeOfWeek
 from model.helpers import WEEKEND, shifts
 from model.hours import Hours
 from utils import get_the_shift
-
+from functools import lru_cache
 
 class Day:
     """Class tha represent a day with 24 hours
@@ -30,6 +30,7 @@ class Day:
 
         return _type_of_week
 
+    @lru_cache(maxsize=None)
     def calculate_day_cost(self, hours: str) -> float:
         if not hours:
             raise NoHoursFound("The actual day has no hours")
